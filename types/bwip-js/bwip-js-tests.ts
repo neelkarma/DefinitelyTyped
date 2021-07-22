@@ -60,9 +60,9 @@ bwipjs
     });
 
 // Browser canvas implementation
-const canvas = document.createElement("canvas") as HTMLCanvasElement;
+const canvas1 = document.createElement("canvas") as HTMLCanvasElement;
 bwipjs(
-    canvas,
+    canvas1,
     {
         bcid: "qrcode",
         text: "example",
@@ -78,10 +78,20 @@ bwipjs(
 
 // Browser canvas implementation using .toCanvas()
 // See: https://github.com/metafloor/bwip-js#browser-usage
-const canvasElement = document.createElement("canvas") as HTMLCanvasElement;
-canvasElement.setAttribute("id", "canvas2");
+const canvas2 = document.createElement("canvas") as HTMLCanvasElement;
+canvas2.setAttribute("id", "canvas2");
 const toCanvas = bwipjs.toCanvas("canvas2", {
     bcid: "code128",
     text: "testing",
 });
 toCanvas; // $ExpectType HTMLCanvasElement
+
+// Browser canvas implementation with exported symbology functions
+// See: https://github.com/metafloor/bwip-js#browser-es6-module-usage
+const canvas3 = document.createElement("canvas") as HTMLCanvasElement;
+canvas3.setAttribute("id", "canvas3")
+
+// $ExpectType HTMLCanvasElement
+bwipjs.ean13(canvas3, {
+    text: "example"
+});
